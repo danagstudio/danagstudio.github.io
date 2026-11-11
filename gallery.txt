@@ -1,0 +1,60 @@
+# DANAG STUDIO portfolio list
+#
+# One line per image:   file name, category
+# The order here is the order on the site (left to right, top to bottom).
+#
+# Categories: product, flyers, fashion, packaging
+# The file name must match the file in the img folder exactly,
+# including capital letters and the ending (.jpg or .png).
+# Lines starting with # are notes and are ignored.
+
+
+# PRODUCT VISUALS
+ss-084.jpg, product
+my-066.jpg, product
+ss-076.jpg, product
+wk-011.jpg, product
+ss-080.jpg, product
+my-apex.jpg, product
+my-wood.jpg, product
+ss-086.jpg, product
+my-sand.jpg, product
+wk-015.jpg, product
+ss-178.jpg, product
+my-specials-img.jpg, product
+
+# FLYERS & CAMPAIGNS
+my-beast-nj.jpg, flyers
+my-dallas.jpg, flyers
+my-xmas.jpg, flyers
+my-exclyusif.jpg, flyers
+my-100k.jpg, flyers
+my-tamale.jpg, flyers
+my-fragcon.jpg, flyers
+my-paris.jpg, flyers
+fl-ss-open.jpg, flyers
+ss-restock.jpg, flyers
+ss-student.jpg, flyers
+fl-persian.jpg, flyers
+fl-signature.jpg, flyers
+fl-wss.jpg, flyers
+fl-priscilla.jpg, flyers
+fl-wealth.jpg, flyers
+
+# FASHION
+tf-gmg-red.jpg, fashion
+tf-barrel-front.jpg, fashion
+tf-faces-portrait.jpg, fashion
+tf-wig-navy.jpg, fashion
+tf-castle.jpg, fashion
+tf-arch.jpg, fashion
+
+# PACKAGING & LOGOS
+pk-jeksal.jpg, packaging
+pk-mamti.jpg, packaging
+pk-marmar-shampoo.jpg, packaging
+pk-tombrown.jpg, packaging
+lg-bea.jpg, packaging
+lg-gc.jpg, packaging
+lg-marmar.jpg, packaging
+lg-ayara1.jpg, packaging

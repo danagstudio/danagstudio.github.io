@@ -60,8 +60,11 @@ nav img{height:40px}
 .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
 .tabs button{font:700 14px Montserrat;letter-spacing:.06em;padding:12px 22px;border-radius:12px;border:2px solid var(--navy);background:none;color:var(--navy);cursor:pointer}
 .tabs button.on{background:var(--ng);color:#fff;border-color:transparent}
-.gal{columns:4 240px;column-gap:18px;margin-top:36px}
-.gal img{width:100%;margin-bottom:18px;border-radius:16px;cursor:zoom-in;box-shadow:0 14px 30px rgba(1,15,33,.12);transition:transform .25s}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.gal img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#fff;border-radius:16px;cursor:zoom-in;box-shadow:0 14px 30px rgba(1,15,33,.12);transition:transform .25s}
+.gal img.fit{object-fit:contain}
+@media(max-width:1000px){.gal{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.gal{grid-template-columns:repeat(2,1fr);gap:10px}.gal img{border-radius:12px}}
 .gal img:hover{transform:scale(1.02)}
 /* sites */
 .sites{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:50px}
@@ -138,9 +141,9 @@ footer{padding:36px 0;text-align:center;font-size:13px;color:rgba(255,255,255,.6
 <footer class="n"><div class="wrap">&copy; 2026 DANAG STUDIO · Crowned in Craft · Accra, Ghana</div></footer>
 <div id="lb"><img alt=""></div>
 <script>
-const W=[["ss-084", "product"], ["my-066", "product"], ["ss-076", "product"], ["wk-011", "product"], ["ss-080", "product"], ["my-apex", "product"], ["my-wood", "product"], ["ss-086", "product"], ["my-sand", "product"], ["wk-015", "product"], ["ss-178", "product"], ["my-specials-img", "product"], ["my-beast-nj", "flyers"], ["my-dallas", "flyers"], ["my-xmas", "flyers"], ["my-exclyusif", "flyers"], ["my-100k", "flyers"], ["my-tamale", "flyers"], ["my-fragcon", "flyers"], ["my-paris", "flyers"], ["fl-ss-open", "flyers"], ["ss-restock", "flyers"], ["ss-student", "flyers"], ["fl-persian", "flyers"], ["fl-signature", "flyers"], ["fl-wss", "flyers"], ["fl-priscilla", "flyers"], ["fl-wealth", "flyers"], ["tf-gmg-red", "fashion"], ["tf-barrel-front", "fashion"], ["tf-faces-portrait", "fashion"], ["tf-wig-navy", "fashion"], ["tf-castle", "fashion"], ["tf-arch", "fashion"], ["pk-jeksal", "packaging"], ["pk-mamti", "packaging"], ["pk-marmar-shampoo", "packaging"], ["pk-tombrown", "packaging"], ["lg-bea", "packaging"], ["lg-gc", "packaging"], ["lg-marmar", "packaging"], ["lg-ayara1", "packaging"]];const gal=document.getElementById('gal');
-function show(c){gal.innerHTML=W.filter(w=>c==='all'||w[1]===c).map(w=>`<img loading="lazy" src="img/${w[0]}.jpg" alt="DANAG STUDIO work">`).join('')}
-show('all');
+let W=[];const gal=document.getElementById('gal');
+function show(c){gal.innerHTML=W.filter(w=>c==='all'||w[1]===c).map(w=>`<img loading="lazy" src="img/${w[0]}" alt="DANAG STUDIO work" onload="if(this.naturalWidth/this.naturalHeight>.9)this.classList.add('fit')" onerror="this.remove()">`).join('')}
+fetch('gallery.txt',{cache:'no-cache'}).then(r=>r.text()).then(t=>{W=t.split('\n').map(l=>l.trim()).filter(l=>l&&l[0]!=='#').map(l=>{const p=l.split(',').map(x=>x.trim());return[p[0],(p[1]||'').toLowerCase()]});show('all')});
 document.getElementById('tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));show(b.dataset.c)};
 const lb=document.getElementById('lb');gal.onclick=e=>{if(e.target.tagName==='IMG'){lb.querySelector('img').src=e.target.src;lb.classList.add('on')}};lb.onclick=()=>lb.classList.remove('on');
 const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40));
